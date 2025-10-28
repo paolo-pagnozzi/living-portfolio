@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Semester Timeline &amp; Milestones</title>
+<link href="https://cdn.tailwindcss.com" rel="stylesheet">
+<style>
+  .timeline {
+    position: relative;
+    padding: 2rem 0;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 100%;
+    background: #d1d5db; /* gray-300 */
+  }
+  .timeline-item {
+    position: relative;
+    width: 50%;
+    padding: 1rem;
+  }
+  .timeline-item:nth-child(odd) {
+    left: 0;
+  }
+  .timeline-item:nth-child(even) {
+    left: 50%;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    top: 1rem;
+    right: -8px;
+    width: 16px;
+    height: 16px;
+    background: #3b82f6; /* blue-500 */
+    border-radius: 50%;
+    z-index: 10;
+  }
+  .timeline-item:nth-child(even)::before {
+    left: -8px;
+    right: auto;
+  }
+</style>
+</head>
+<body class="bg-white text-gray-800 font-sans">
+<header class="bg-gray-800 text-white py-6">
+  <div class="max-w-5xl mx-auto px-4">
+    <h1 class="text-3xl font-bold">Semester Timeline &amp; Milestones</h1>
+    <nav class="mt-4 space-x-4 text-blue-200">
+      <a href="index.html" class="underline">Home</a>
+      <a href="cis9650_case_study.html" class="underline">CIS 9650 Case Study</a>
+      <a href="cis9340_case_study.html" class="underline">CIS 9340 Case Study</a>
+      <a href="statistics_case_study.html" class="underline">STA 9708 Case Study</a>
+      <a href="notes_templates.html" class="underline">Note Templates</a>
+      <a href="analytics_ecosystem.html" class="underline">Analytics Ecosystem</a>
+      <a href="stats_flashcards.html" class="underline">Stats Flashcards</a>
+      <a href="media.html" class="underline">Media</a>
+    </nav>
+  </div>
+</header>
+<main class="max-w-5xl mx-auto px-4 py-8">
+  <section class="timeline">
+    <div class="timeline-item">
+      <div class="bg-gray-100 p-4 rounded shadow">
+        <h3 class="font-semibold">Week 1 &ndash; Semester Kickoff</h3>
+        <p>Course introductions, syllabus review and team formation discussions.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="bg-gray-100 p-4 rounded shadow">
+        <h3 class="font-semibold">Week 4 &ndash; Early Milestones</h3>
+        <p>ER diagram submissions for CIS 9340, first Python assignment for CIS 9650, and STA 9708 Midterm #1.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="bg-gray-100 p-4 rounded shadow">
+        <h3 class="font-semibold">Week 8 &ndash; Project Proposals</h3>
+        <p>Project proposals due for both CIS 9340 and CIS 9650; STA 9708 Midterm #2.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="bg-gray-100 p-4 rounded shadow">
+        <h3 class="font-semibold">Week 12 &ndash; Progress Reports</h3>
+        <p>Progress reports submitted for projects; STA 9708 final exam preparation begins.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="bg-gray-100 p-4 rounded shadow">
+        <h3 class="font-semibold">Week 15 &ndash; Finals &amp; Presentations</h3>
+        <p>Final project submissions and presentations for CIS courses; STA 9708 final exam and semester reflection.</p>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="bg-gray-200 text-center py-4 mt-8">
+  <p>&copy; 2025 Paul Pagnozzi &mdash; MSBA Portfolio</p>
+</footer>
+</body>
+</html>
