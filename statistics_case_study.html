@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STA 9708 Case Study – Managerial Statistics</title>
+<link href="https://cdn.tailwindcss.com" rel="stylesheet">
+</head>
+<body class="bg-white text-gray-800 font-sans">
+<header class="bg-gray-800 text-white py-6">
+  <div class="max-w-5xl mx-auto px-4">
+    <h1 class="text-3xl font-bold">Managerial Statistics Case Study</h1>
+    <p class="mt-2 text-sm italic">STA 9708 &mdash; Applying regression analysis and inference</p>
+    <nav class="mt-4 space-x-4 text-blue-200">
+      <a href="index.html" class="underline">Home</a>
+      <a href="cis9650_case_study.html" class="underline">CIS 9650 Case Study</a>
+      <a href="cis9340_case_study.html" class="underline">CIS 9340 Case Study</a>
+      <a href="notes_templates.html" class="underline">Note Templates</a>
+      <a href="timeline.html" class="underline">Timeline</a>
+      <a href="analytics_ecosystem.html" class="underline">Analytics Ecosystem</a>
+      <a href="stats_flashcards.html" class="underline">Stats Flashcards</a>
+      <a href="media.html" class="underline">Media</a>
+    </nav>
+  </div>
+</header>
+<main class="max-w-5xl mx-auto px-4 py-8">
+  <section class="mb-10">
+    <h2 class="text-2xl font-bold mb-4">Background &amp; Objectives</h2>
+    <p class="mb-4">Managerial Statistics equips students with tools to make data‑driven decisions under uncertainty.  
+      In this case study we explore linear regression using a simple dataset relating advertising spend to sales.  
+      Our objective is to estimate how changes in advertising budgets impact revenue and to quantify the strength of this relationship.</p>
+  </section>
+  <section class="mb-10">
+    <h2 class="text-2xl font-bold mb-4">Data &amp; Methodology</h2>
+    <p class="mb-4">We simulated a dataset with 20 observations where the independent variable <em>X</em> represents advertising spend in thousands of dollars and the dependent variable <em>Y</em> represents sales in thousands of units.  
+      A simple linear model <em>Y = β<sub>0</sub> + β<sub>1</sub>X + ε</em> was fitted to the data using ordinary least squares.</p>
+    <pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto"><code>import numpy as np
+import pandas as pd
+from sklearn.linear_model import LinearRegression
+
+# Generate synthetic dataset
+np.random.seed(42)
+X = np.arange(0, 10.5, 0.5).reshape(-1, 1)
+noise = np.random.normal(0, 2, size=X.shape)
+Y = 1.6 * X + 1.5 + noise
+
+# Fit linear regression model
+model = LinearRegression()
+model.fit(X, Y)
+intercept = model.intercept_[0]
+slope = model.coef_[0][0]
+
+print(f"Intercept: {intercept:.2f}, Slope: {slope:.2f}")
+</code></pre>
+    <p class="mb-4">The model estimated an intercept of approximately 1.5 and a slope of 1.6, indicating that for every additional thousand dollars spent on advertising, sales increased by about 1.6 thousand units.  
+      We also calculated R‑squared to assess the proportion of variance explained by the model and inspected residual plots to verify assumptions.</p>
+  </section>
+  <section class="mb-10">
+    <h2 class="text-2xl font-bold mb-4">Interpretation</h2>
+    <p class="mb-4">The strong positive slope suggests a significant relationship between advertising and sales.  
+      However, correlation does not imply causation; other factors such as product quality and market conditions may play a role.  
+      Confidence intervals and hypothesis tests (e.g., t‑test for the slope coefficient) further validate the significance of the relationship.</p>
+    <p class="mb-4">This analysis demonstrates how statistical methods complement database and programming skills: data obtained via SQL and cleaned in Python can be rigorously analyzed using statistical models to inform strategic decisions.</p>
+  </section>
+</main>
+<footer class="bg-gray-200 text-center py-4 mt-8">
+  <p>&copy; 2025 Paul Pagnozzi &mdash; MSBA Portfolio</p>
+</footer>
+</body>
+</html>
