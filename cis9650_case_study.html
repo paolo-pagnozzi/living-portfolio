@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CIS 9650 Case Study – Programming for Analytics</title>
+<link href="https://cdn.tailwindcss.com" rel="stylesheet">
+</head>
+<body class="bg-white text-gray-800 font-sans">
+<header class="bg-gray-800 text-white py-6">
+  <div class="max-w-5xl mx-auto px-4">
+    <h1 class="text-3xl font-bold">Programming for Analytics Case Study</h1>
+    <p class="mt-2 text-sm italic">CIS 9650 &mdash; Demonstrating data wrangling, visualization and insight</p>
+    <nav class="mt-4 space-x-4 text-blue-200">
+      <a href="index.html" class="underline">Home</a>
+      <a href="cis9340_case_study.html" class="underline">CIS 9340 Case Study</a>
+      <a href="statistics_case_study.html" class="underline">STA 9708 Case Study</a>
+      <a href="notes_templates.html" class="underline">Note Templates</a>
+      <a href="timeline.html" class="underline">Timeline</a>
+      <a href="analytics_ecosystem.html" class="underline">Analytics Ecosystem</a>
+      <a href="stats_flashcards.html" class="underline">Stats Flashcards</a>
+      <a href="media.html" class="underline">Media</a>
+    </nav>
+  </div>
+</header>
+<main class="max-w-5xl mx-auto px-4 py-8">
+  <section class="mb-10">
+    <h2 class="text-2xl font-bold mb-4">Project Overview</h2>
+    <p class="mb-4">In the Programming for Analytics course, teams were asked to build a Jupyter Notebook application that used Python to explore and analyze a dataset of their choice.  
+      Our team selected a public dataset on population and economic indicators from the <em>World Bank</em>, which covered several decades across dozens of countries.  
+      The goal was to examine how GDP and life expectancy have evolved over time and to identify interesting relationships between economic growth and public health.</p>
+    <p class="mb-4">Key requirements from the project brief included:</p>
+    <ul class="list-disc list-inside mb-4">
+      <li>Download and document the chosen dataset, citing its source and licensing.</li>
+      <li>Formulate clear research questions and hypotheses.</li>
+      <li>Load the data using <code>pandas</code> and perform exploratory data analysis (EDA).</li>
+      <li>Clean and transform the data for analysis.</li>
+      <li>Create visualizations with <code>matplotlib</code> or <code>seaborn</code> that answer the research questions.</li>
+      <li>Draw conclusions and discuss implications for stakeholders.</li>
+    </ul>
+  </section>
+  <section class="mb-10">
+    <h2 class="text-2xl font-bold mb-4">Data Loading &amp; Cleaning</h2>
+    <p class="mb-4">We used <code>pandas</code> to download the World Bank CSV file, inspect its columns, and handle missing values.  
+      A separate <code>DataFrame</code> was created for each indicator (GDP per capita and life expectancy), and these were merged on country and year.  
+      Data cleaning included filtering out countries with too few observations, forward filling missing years, and converting units to make the metrics comparable.</p>
+    <pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto"><code># Import libraries
+import pandas as pd
+
+# Load GDP and life expectancy datasets
+url_gdp = "https://example.com/world_bank_gdp.csv"
+url_life = "https://example.com/world_bank_life_expectancy.csv"
+
+gdp = pd.read_csv(url_gdp)
+life = pd.read_csv(url_life)
+
+# Keep only relevant columns and rename for clarity
+gdp = gdp[['Country Name', 'Country Code', 'Year', 'GDP per capita']].rename(columns={'GDP per capita': 'gdp_per_capita'})
+life = life[['Country Name', 'Country Code', 'Year', 'Life expectancy at birth (years)']].rename(columns={'Life expectancy at birth (years)': 'life_expectancy'})
+
+# Merge on country and year
+data = pd.merge(gdp, life, on=['Country Name', 'Country Code', 'Year'], how='inner')
+
+# Forward fill missing values and drop rows with remaining NaNs
+data = data.sort_values(['Country Code', 'Year']).groupby('Country Code').fillna(method='ffill').dropna()
+</code></pre>
+  </section>
+  <section class="mb-10">
+    <h2 class="text-2xl font-bold mb-4">Exploratory Analysis</h2>
+    <p class="mb-4">After cleaning the data, we performed exploratory analysis to understand trends.  
+      We began by plotting GDP per capita and life expectancy over time for select countries, and then used scatter plots to explore the relationship between these variables.</p>
+    <pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto"><code>import matplotlib.pyplot as plt
+
+# Scatter plot of GDP vs Life Expectancy
+plt.figure(figsize=(8,6))
+plt.scatter(data['gdp_per_capita'], data['life_expectancy'], alpha=0.3)
+plt.title('Life Expectancy vs GDP per Capita')
+plt.xlabel('GDP per Capita (USD)')
+plt.ylabel('Life Expectancy (years)')
+plt.grid(True)
+plt.show()
+</code></pre>
+    <p class="mb-4">The scatter plot shows a positive relationship: countries with higher GDP per capita tend to have longer life expectancy.  
+      We also calculated correlation coefficients and used regression analysis to quantify this relationship.</p>
+  </section>
+  <section class="mb-10">
+    <h2 class="text-2xl font-bold mb-4">Results &amp; Conclusions</h2>
+    <p class="mb-4">Our analysis revealed that economic growth and public health are strongly linked.  
+      While outliers exist, most countries follow a trend in which greater wealth supports better healthcare, nutrition and infrastructure, leading to longer life expectancy.  
+      We concluded by noting that policies promoting equitable economic growth could have substantial health benefits.</p>
+    <p class="mb-4">This case study highlights how Python serves as a powerful tool for data wrangling and visualization in the field of analytics.  
+      It also demonstrates how the skills from CIS 9650 complement those learned in database management (for data retrieval) and statistics (for inference).</p>
+  </section>
+</main>
+<footer class="bg-gray-200 text-center py-4 mt-8">
+  <p>&copy; 2025 Paul Pagnozzi &mdash; MSBA Portfolio</p>
+</footer>
+</body>
+</html>
