@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Statistics Flashcards &amp; Cheat Sheet</title>
+<link href="https://cdn.tailwindcss.com" rel="stylesheet">
+</head>
+<body class="bg-white text-gray-800 font-sans">
+<header class="bg-gray-800 text-white py-6">
+  <div class="max-w-5xl mx-auto px-4">
+    <h1 class="text-3xl font-bold">Statistics Flashcards &amp; Cheat Sheet</h1>
+    <p class="mt-2 text-sm italic">Interactive review of key formulas and concepts</p>
+    <nav class="mt-4 space-x-4 text-blue-200">
+      <a href="index.html" class="underline">Home</a>
+      <a href="cis9650_case_study.html" class="underline">CIS 9650 Case Study</a>
+      <a href="cis9340_case_study.html" class="underline">CIS 9340 Case Study</a>
+      <a href="statistics_case_study.html" class="underline">STA 9708 Case Study</a>
+      <a href="notes_templates.html" class="underline">Note Templates</a>
+      <a href="timeline.html" class="underline">Timeline</a>
+      <a href="analytics_ecosystem.html" class="underline">Analytics Ecosystem</a>
+      <a href="media.html" class="underline">Media</a>
+    </nav>
+  </div>
+</header>
+<main class="max-w-5xl mx-auto px-4 py-8">
+  <section class="mb-8">
+    <h2 class="text-2xl font-bold mb-4">Flashcards</h2>
+    <p class="mb-4">Click on each card to reveal details. These flashcards summarize major topics from managerial statistics.</p>
+    <div class="space-y-4">
+      <details class="bg-gray-50 border border-gray-200 p-4 rounded">
+        <summary class="font-semibold cursor-pointer">Probability Rules</summary>
+        <p class="mt-2">For events <em>A</em> and <em>B</em>:  
+          <em>P(A \cup B) = P(A) + P(B) − P(A \cap B)</em>  
+          <em>P(A^c) = 1 − P(A)</em>  
+          <em>P(A | B) = \frac{P(A \cap B)}{P(B)}</em> when <em>P(B) &gt; 0</em>.</p>
+      </details>
+      <details class="bg-gray-50 border border-gray-200 p-4 rounded">
+        <summary class="font-semibold cursor-pointer">Discrete Distributions</summary>
+        <p class="mt-2">The <strong>Binomial</strong> distribution models the number of successes in <em>n</em> independent Bernoulli trials:  
+          <em>P(X = k) = {n \choose k} p^k (1−p)^{n−k}</em>.  
+          The <strong>Poisson</strong> distribution models the number of events in a fixed interval:  
+          <em>P(X = k) = \frac{e^{-\lambda} \lambda^k}{k!}</em>.</p>
+      </details>
+      <details class="bg-gray-50 border border-gray-200 p-4 rounded">
+        <summary class="font-semibold cursor-pointer">Normal Distribution &amp; Z‑Scores</summary>
+        <p class="mt-2">A continuous distribution characterized by mean <em>μ</em> and standard deviation <em>σ</em>.  
+          Standardize values using <em>z = \frac{x − μ}{σ}</em> to compare across different scales.  
+          Approximately 68% of values lie within ±1σ, 95% within ±2σ, and 99.7% within ±3σ of the mean.</p>
+      </details>
+      <details class="bg-gray-50 border border-gray-200 p-4 rounded">
+        <summary class="font-semibold cursor-pointer">Confidence Intervals</summary>
+        <p class="mt-2">A 95% confidence interval for the population mean <em>μ</em> is given by:  
+          <em>\bar{x} ± z_{\alpha/2} \frac{σ}{\sqrt{n}}</em> when population variance is known, or  
+          <em>\bar{x} ± t_{\alpha/2, n−1} \frac{s}{\sqrt{n}}</em> when using sample variance.</p>
+      </details>
+      <details class="bg-gray-50 border border-gray-200 p-4 rounded">
+        <summary class="font-semibold cursor-pointer">Hypothesis Testing</summary>
+        <p class="mt-2">To test a claim about a parameter, set up null and alternative hypotheses, choose a significance level, compute a test statistic (z or t), and compare to critical values or use a p‑value approach.  
+          Reject the null hypothesis if the test statistic falls in the rejection region.</p>
+      </details>
+      <details class="bg-gray-50 border border-gray-200 p-4 rounded">
+        <summary class="font-semibold cursor-pointer">Regression &amp; Correlation</summary>
+        <p class="mt-2">Simple linear regression fits a line <em>y = β_0 + β_1 x</em> to data by minimizing squared errors.  
+          The coefficient of determination <em>R^2</em> measures the proportion of variance explained.  
+          The correlation coefficient <em>r</em> quantifies the strength and direction of a linear relationship between two variables.</p>
+      </details>
+    </div>
+  </section>
+</main>
+<footer class="bg-gray-200 text-center py-4 mt-8">
+  <p>&copy; 2025 Paul Pagnozzi &mdash; MSBA Portfolio</p>
+</footer>
+</body>
+</html>
