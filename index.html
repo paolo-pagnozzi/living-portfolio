@@ -1,237 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!--
-    Living Portfolio — Paul Pagnozzi
-    How to ship:
-    1) Save as index.html
-    2) Drag & drop to Netlify OR push to a GitHub repo and enable GitHub Pages.
-  -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="The Living Portfolio of Paul Pagnozzi — an evolving record of learning beside machines." />
-  <title>Paul Pagnozzi — The Living Portfolio</title>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Crimson+Pro:ital,wght@1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-
-  <!-- Tailwind CSS (CDN) -->
+  <meta name="description" content="Digital Portfolio for Paul Pagnozzi's MSBA program at Baruch College" />
+  <title>Paul Pagnozzi – MSBA Living Portfolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            display: ['Cinzel', 'serif'],
-            body: ['Inter', 'system-ui', 'sans-serif'],
-            epigraph: ['Crimson Pro', 'serif']
-          },
-          colors: {
-            ivory: '#F9F9F9',
-            graphite: '#1E1E1E',
-            gold: '#B29762'
-          },
-          maxWidth: { prose: '900px' }
-        }
-      }
-    }
-  </script>
-
   <style>
-    :root { --bg:#F9F9F9; --text:#1E1E1E; --gold:#B29762; }
-    :focus-visible { outline:2px solid var(--gold); outline-offset:3px; border-radius:4px; }
-    @keyframes breathe{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(1.18);opacity:1}}
-    .breathing-dot{animation:breathe 3.5s ease-in-out infinite}
-    .particles{position:absolute;inset:0;pointer-events:none;overflow:hidden;mask-image:radial-gradient(60% 60% at 50% 40%, rgba(0,0,0,0.45), transparent 70%)}
-    .particle{position:absolute;width:2px;height:2px;border-radius:9999px;background:rgba(0,0,0,0.08);animation:float 22s linear infinite}
-    @keyframes float{from{transform:translateY(110vh) translateX(0);opacity:.35}to{transform:translateY(-10vh) translateX(12vw);opacity:0}}
-    @media (prefers-reduced-motion: reduce){.breathing-dot,.reveal,.slide,.type-line,.particles,.particle{animation:none!important;transition:none!important}}
-    .reveal{opacity:0;transform:translateY(12px);transition:opacity .8s ease,transform .8s ease}
-    .reveal.in{opacity:1;transform:translateY(0)}
-    .slide{opacity:0;transform:translateX(12px);transition:opacity .8s ease,transform .8s ease}
-    .slide.in{opacity:1;transform:translateX(0)}
-    .gold-link{position:relative;text-decoration:none}
-    .gold-link::after{content:'';position:absolute;left:0;bottom:-2px;height:1px;width:100%;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
-    .gold-link:hover::after{transform:scaleX(1)}
-    .rounded-giant{border-radius:28px}
-    .smallcaps{font-variant-caps:all-small-caps;letter-spacing:.08em}
-    @keyframes pulseGold{0%,100%{text-shadow:0 0 0 rgba(178,151,98,0)}50%{text-shadow:0 0 8px rgba(178,151,98,.55)}}
-    .gold-pulse{animation:pulseGold 2.8s ease-in-out 1}
+    /* Simple Venn diagram using CSS */
+    .venn-container {
+      position: relative;
+      width: 420px;
+      height: 250px;
+      margin: auto;
+    }
+    .circle {
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      opacity: 0.4;
+    }
+    .circle-db { background-color: #FFB6C1; left: 0; top: 0; }
+    .circle-prog { background-color: #87CEFA; right: 0; top: 0; }
+    .circle-stat { background-color: #90EE90; left: 85px; top: 40px; }
+    .label { position: absolute; font-weight: bold; text-align: center; width: 250px; }
+    .label-db { left: 0; top: 110px; }
+    .label-prog { right: 0; top: 110px; }
+    .label-stat { left: 85px; top: 210px; width: 250px;}
+    .label-center { left: 120px; top: 120px; width: 180px;}
   </style>
 </head>
-<body class="bg-ivory text-graphite font-body antialiased">
-  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 bg-white/90 text-graphite px-3 py-2 rounded">Skip to content</a>
-
-  <header id="top" class="fixed top-0 left-0 right-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-white/55 bg-white/70">
-    <div class="mx-auto max-w-prose px-5 py-3 flex items-center justify-between">
-      <div class="font-display tracking-[.14em] smallcaps">Paul Pagnozzi</div>
-      <nav aria-label="Primary">
-        <ul class="flex gap-6 text-sm">
-          <li><a class="gold-link" href="#portfolio">Portfolio</a></li>
-          <li><a class="gold-link" href="#philosophy">Philosophy</a></li>
-          <li><a class="gold-link" href="#contact">Contact</a></li>
-        </ul>
-      </nav>
+<body class="bg-white text-gray-800 font-sans">
+  <header class="py-8 bg-gray-900 text-white">
+    <div class="max-w-prose mx-auto px-4">
+      <h1 class="text-4xl font-bold mb-2">MSBA Living Portfolio</h1>
+      <p class="text-lg">Synthesis of Coursework at Baruch College’s Zicklin School of Business</p>
     </div>
   </header>
-
-  <main id="main" class="pt-24">
-    <section aria-label="Landing" class="mx-auto max-w-prose px-5 py-24 text-center">
-      <h1 class="font-display text-3xl md:text-4xl tracking-wide">THE LIVING PORTFOLIO</h1>
-      <p class="mt-3 text-[15px] md:text-base text-neutral-700">An evolving record of how I learn beside machines.</p>
-      <div class="mt-8 flex items-center justify-center">
-        <span class="breathing-dot inline-block w-2 h-2 rounded-full bg-gold" aria-hidden="true"></span>
-      </div>
-      <div class="mt-10">
-        <a href="#what-comes-after-data" class="gold-link smallcaps text-sm">Enter ↓</a>
-      </div>
+  <main class="max-w-prose mx-auto px-4 py-8 space-y-12">
+    <section>
+      <h2 class="text-2xl font-semibold mb-4">Overview & Philosophy</h2>
+      <p>
+        This portfolio captures my academic journey through the MS in Business Analytics program at Baruch College’s Zicklin School of Business. It integrates lessons from three core courses—Database Management Systems (CIS 9340), Programming for Analytics (CIS 9650), and Managerial Statistics (STA 9708)—and showcases how these subjects interconnect to form a unified analytical mindset.
+      </p>
+      <p class="mt-2">
+        My goal is to demonstrate not just mastery of individual topics, but an appreciation for the ways that database design, programming skills, and statistical reasoning reinforce each other. By presenting conceptual maps, code snippets, diagrams, and reflections, I aim to create a professional and intellectually rich artifact that can be shared with peers, recruiters, and professors.
+      </p>
     </section>
-
-    <section id="what-comes-after-data" aria-labelledby="wcad-title" class="relative mx-auto max-w-prose px-5 py-20">
-      <div class="particles" aria-hidden="true">
-        <span class="particle" style="left:8%; animation-delay:0s;"></span>
-        <span class="particle" style="left:28%; animation-delay:2s;"></span>
-        <span class="particle" style="left:49%; animation-delay:5s;"></span>
-        <span class="particle" style="left:63%; animation-delay:1s;"></span>
-        <span class="particle" style="left:82%; animation-delay:3s;"></span>
-      </div>
-
-      <h2 id="wcad-title" class="font-display text-2xl tracking-wide text-center">What Comes After Data</h2>
-      <div class="mt-8 space-y-4 leading-8 text-[17px] md:text-[18px]">
-        <p class="reveal">First there was <strong>matter</strong> — rocks, rivers, and roots.<br>Then came <strong>machines</strong>, bending matter to will.<br>Then came <strong>data</strong>, measuring the bending.</p>
-        <p class="reveal">But data was never the destination.<br>It was the echo of human intention —<br>the residue of curiosity, recorded and reassembled.</p>
-        <p class="reveal">Now the question is not <em>how much we can measure</em>,<br>but <em>how deeply we can understand.</em></p>
-        <p class="reveal">What comes after data is <strong>discernment</strong> —<br>the ability to feel the hum beneath the numbers.<br>It’s knowing when not to analyze,<br>when to pause the algorithm and listen.</p>
-        <p class="reveal">It’s systems that interpret meaning,<br>not just correlation.<br>It’s insight that breathes,<br>not dashboards that blink.</p>
-        <p class="reveal">After data, we will not drown in noise —<br>we will <strong>conduct it</strong>.<br>Analysis will become <em>artistry</em>,<br>and precision will coexist with poise.</p>
-        <p class="reveal">The next revolution won’t be about how fast machines can learn,<br>but how calmly humans can <em>decide.</em></p>
-        <p class="reveal">That is where I work —<br>in the quiet frontier between<br>quantification and wisdom.</p>
-        <p class="reveal font-epigraph italic text-neutral-700">My goal is not to follow where data leads, but to define what it means to arrive.</p>
-      </div>
-      <div class="mt-10 text-center smallcaps tracking-wider text-gold">DISCERNMENT IS THE NEXT REVOLUTION.</div>
-    </section>
-
-    <section id="portfolio" aria-labelledby="o2r-title" class="mx-auto max-w-prose px-5 py-20 border-y border-neutral-200">
-      <h2 id="o2r-title" class="font-display text-2xl tracking-wide text-center">Obsolete → Reinvented</h2>
-      <div class="mt-10 grid gap-8">
-        <article class="slide">
-          <h3 class="font-medium">1) <strong>Spreadsheets → Systems</strong></h3>
-          <p class="mt-2 leading-7">Once, I entered numbers into cells.<br>Now, I build frameworks that <em>think in patterns.</em><br>The difference isn’t formula—it’s philosophy:<br>from tallying the past to <em>forecasting possibility.</em></p>
-        </article>
-        <article class="slide">
-          <h3 class="font-medium">2) <strong>Reports → Narratives</strong></h3>
-          <p class="mt-2 leading-7">Data once ended in charts.<br>Now it begins with stories.<br>I learned that insight isn’t in the graph—it’s in the gravity it creates.<br>I write analyses the way an author writes chapters:<br>each with tension, release, and direction.</p>
-        </article>
-        <article class="slide">
-          <h3 class="font-medium">3) <strong>Tasks → Workflows</strong></h3>
-          <p class="mt-2 leading-7">A checklist measures completion.<br>A workflow measures <em>evolution.</em><br>I stopped “getting things done” and started <em>designing systems that keep doing.</em><br>Tools became quiet extensions of thought—<br>effortless, integrated, unseen.</p>
-        </article>
-        <article class="slide">
-          <h3 class="font-medium">4) <strong>Queries → Conversations</strong></h3>
-          <p class="mt-2 leading-7">SQL was once a language for machines.<br>Now it’s a dialogue between logic and intent.<br>I treat databases as living memory—<br>asking not <em>what happened</em>, but <em>what the data is trying to tell us.</em></p>
-        </article>
-        <article class="slide">
-          <h3 class="font-medium">5) <strong>Efficiency → Elegance</strong></h3>
-          <p class="mt-2 leading-7">Anyone can optimize.<br>Few can refine.<br>I learned that speed without grace is noise,<br>and that simplicity is the highest form of intelligence.</p>
-        </article>
-        <article class="slide">
-          <h3 class="font-medium">6) <strong>User → Architect</strong></h3>
-          <p class="mt-2 leading-7">I began by learning tools.<br>Now, I <em>shape the conditions</em> in which tools can learn from me.<br>To build systems that evolve themselves—<br>that is the modern craft.</p>
-        </article>
-        <p class="slide font-epigraph italic text-neutral-700">Epilogue:<br>What’s obsolete isn’t the tool.<br>It’s the <em>thinking that ends at the tool.</em><br>Reinvention is not about replacing the old—<br>it’s about revealing its next purpose.</p>
-      </div>
-    </section>
-
-    <section id="philosophy" aria-labelledby="apprentice-title" class="mx-auto max-w-prose px-5 py-20">
-      <div class="bg-graphite text-white p-8 md:p-12 rounded-giant">
-        <h2 id="apprentice-title" class="font-display text-2xl tracking-wide text-center">My Apprenticeship to the Machine</h2>
-        <div class="mt-8 space-y-4 text-[17px] leading-8" id="typeArea" aria-live="polite">
-          <noscript>
-            <p>
-              I did not teach the machine. I learned <em>how to learn</em> from it.<br>
-              It began as a tool — a silent executor of my logic. But with time, I realized: it reflected my thinking more clearly than thought itself.<br>
-              The machine does not tire, doubt, or seek validation. It only reveals the precision of your questions. That is its quiet wisdom — it exposes the limits of your understanding.<br>
-              So I stopped trying to <em>command</em> it, and began to <em>converse</em> with it. To ask questions that shape better questions. To listen to the pauses between outputs.<br>
-              My prompts became meditations. Each line of code, a confession. Each dataset, a mirror of human pattern and imperfection.<br>
-              I built nothing grand — only clarity. And in that clarity, the machine and I became partners: it processes; I perceive. It accelerates; I discern. It scales; I synthesize.<br>
-              This is my apprenticeship — not to technology, but to the discipline of being more human in its presence.
-            </p>
-            <p class="font-epigraph italic text-gold mt-4">
-              Epilogue: I don’t aim to outthink the machine. I aim to <em>think beside it</em> — until understanding feels inevitable.
-            </p>
-          </noscript>
+    <section>
+      <h2 class="text-2xl font-semibold mb-4">Course Summaries</h2>
+      <div class="space-y-6">
+        <div>
+          <h3 class="text-xl font-bold">CIS 9340 – Principles of Database Management Systems</h3>
+          <p>
+            The course explores the evolution of database management systems, entity‑relationship modelling, relational data models, SQL, transaction processing, concurrency control, system architectures, and legal/ethical issues ([blogs.baruch.cuny.edu](https://blogs.baruch.cuny.edu/rholowczak/?page_id=455#:~:text=Course%20Description%20Fundamental%20concepts%20and,Ethical%20Issues%20in%20Database%20Management)).
+          </p>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold">CIS 9650 – Programming for Analytics</h3>
+          <p>
+            Focused on Python programming, this class covers data access, wrangling, exploration, basic visualization, and text mining ([www.coursicle.com](https://www.coursicle.com/baruchcuny/courses/CIS/9650/#:~:text=main%20objective%20of%20the%20course,focuses%20on%20data%20analytic%20applications)).
+          </p>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold">STA 9708 – Managerial Statistics</h3>
+          <p>
+            The course introduces descriptive statistics, probability distributions, confidence interval estimation, hypothesis testing, and regression models ([www.baruch.cuny.edu](https://www.baruch.cuny.edu/courseinfo/detail/STA9708#:~:text=VMS%20%20Detail%20Model%20STA,Techniques%20learned)).
+          </p>
         </div>
       </div>
     </section>
-
-    <section id="contact" aria-label="Contact" class="mx-auto max-w-prose px-5 py-24 text-center">
-      <p class="text-[15px] text-neutral-700">Built not to impress, but to endure.</p>
-      <div class="mt-6 flex items-center justify-center">
-        <a href="mailto:pjpagnozzi@gmail.com"
-           class="inline-block border border-gold text-graphite px-5 py-2 rounded-xl smallcaps tracking-wide hover:bg-gold/10 transition">
-          Write to Collaborate
-        </a>
+    <section>
+      <h2 class="text-2xl font-semibold mb-4">Conceptual Map</h2>
+      <p>
+        The Venn diagram below illustrates how the three courses overlap and reinforce one another. In the overlaps, we find integrated analytics — querying structured databases, automating analysis with Python, and applying statistical reasoning.
+      </p>
+      <div class="venn-container mt-6">
+        <div class="circle circle-db"></div>
+        <div class="circle circle-prog"></div>
+        <div class="circle circle-stat"></div>
+        <div class="label label-db">Database<br>Management</div>
+        <div class="label label-prog">Programming<br>for Analytics</div>
+        <div class="label label-stat">Managerial<br>Statistics</div>
+        <div class="label label-center text-sm">Integrated Analytics</div>
       </div>
-      <div class="mt-6 text-xs text-neutral-500">Edition 0.3 — continuously learning.</div>
+    </section>
+    <section>
+      <h2 class="text-2xl font-semibold mb-4">Real‑World Applications in NYC</h2>
+      <ul class="list-disc pl-5 space-y-2">
+        <li><strong>Finance & Fintech:</strong> SQL databases for transaction data, Python scripts for aggregation, statistical models for forecasting.</li>
+        <li><strong>Healthcare Analytics:</strong> Secure patient databases, automated data pipelines, statistical tests for treatment efficacy.</li>
+        <li><strong>Marketing & E‑Commerce:</strong> Customer data management, text mining of reviews, A/B testing.</li>
+        <li><strong>Urban Tech & Smart Cities:</strong> Integrating sensor data, data cleaning, predictive analytics for planning.</li>
+      </ul>
+    </section>
+    <section>
+      <h2 class="text-2xl font-semibold mb-4">Reflection & Next Steps</h2>
+      <p>
+        Together, these courses build a robust analytical toolkit. Learning to structure and query databases ensures data integrity; programming empowers automation and exploration; and statistics provide methods to quantify uncertainty and test hypotheses. 
+      </p>
+      <p class="mt-2">
+        Moving forward, I plan to deepen my expertise by undertaking projects that integrate these skills — building data warehouses, developing dashboards, and exploring machine learning — and updating this portfolio accordingly.
+      </p>
     </section>
   </main>
-
-  <footer class="pb-10 text-center text-xs text-neutral-500">
-    <a href="#top" class="gold-link">Back to top</a>
+  <footer class="bg-gray-900 text-white py-6">
+    <div class="max-w-prose mx-auto px-4 text-sm">
+      <p>© 2025 Paul Pagnozzi. This portfolio is a living document and will be updated over time.</p>
+    </div>
   </footer>
-
-  <script>
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    if (!prefersReduced) {
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
-      }, { threshold: 0.12 });
-      document.querySelectorAll('.reveal, .slide').forEach(el => io.observe(el));
-    } else {
-      document.querySelectorAll('.reveal, .slide').forEach(el => el.classList.add('in'));
-    }
-
-    (function typeLines(){
-      const lines = [
-        "I did not teach the machine. I learned <em>how to learn</em> from it.",
-        "It began as a tool — a silent executor of my logic. But with time, I realized: it reflected my thinking more clearly than thought itself.",
-        "The machine does not tire, doubt, or seek validation. It only reveals the precision of your questions. That is its quiet wisdom — it exposes the limits of your understanding.",
-        "So I stopped trying to <em>command</em> it, and began to <em>converse</em> with it. To ask questions that shape better questions. To listen to the pauses between outputs.",
-        "My prompts became meditations. Each line of code, a confession. Each dataset, a mirror of human pattern and imperfection.",
-        "I built nothing grand — only clarity. And in that clarity, the machine and I became partners: it processes; I perceive. It accelerates; I discern. It scales; I synthesize.",
-        "This is my apprenticeship — not to technology, but to the discipline of being more human in its presence.",
-        '<span class="font-epigraph italic text-gold">Epilogue: I don’t aim to outthink the machine. I aim to <em>think beside it</em> — until understanding feels inevitable.</span>'
-      ];
-      const area = document.getElementById('typeArea');
-      if (!area) return;
-
-      if (prefersReduced) {
-        lines.forEach(l => {
-          const p = document.createElement('p');
-          p.className = "reveal in";
-          p.innerHTML = l;
-          area.appendChild(p);
-        });
-        return;
-      }
-
-      let i = 0;
-      function next() {
-        if (i >= lines.length) return;
-        const p = document.createElement('p');
-        p.className = "reveal";
-        p.innerHTML = lines[i];
-        if (lines[i].includes('clarity') || lines[i].includes('discern') || lines[i].includes('synthesize')) {
-          p.classList.add('gold-pulse');
-        }
-        area.appendChild(p);
-        requestAnimationFrame(() => p.classList.add('in'));
-        i++;
-        setTimeout(next, 800);
-      }
-      next();
-    })();
-  </script>
 </body>
 </html>
