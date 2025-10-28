@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CIS 9340 Case Study – Database Management Project</title>
+<link href="https://cdn.tailwindcss.com" rel="stylesheet">
+</head>
+<body class="bg-white text-gray-800 font-sans">
+<header class="bg-gray-800 text-white py-6">
+  <div class="max-w-5xl mx-auto px-4">
+    <h1 class="text-3xl font-bold">Database Management Case Study</h1>
+    <p class="mt-2 text-sm italic">CIS 9340 &mdash; Designing a relational database from concept to implementation</p>
+    <nav class="mt-4 space-x-4 text-blue-200">
+      <a href="index.html" class="underline">Home</a>
+      <a href="cis9650_case_study.html" class="underline">CIS 9650 Case Study</a>
+      <a href="statistics_case_study.html" class="underline">STA 9708 Case Study</a>
+      <a href="notes_templates.html" class="underline">Note Templates</a>
+      <a href="timeline.html" class="underline">Timeline</a>
+      <a href="analytics_ecosystem.html" class="underline">Analytics Ecosystem</a>
+      <a href="stats_flashcards.html" class="underline">Stats Flashcards</a>
+      <a href="media.html" class="underline">Media</a>
+    </nav>
+  </div>
+</header>
+<main class="max-w-5xl mx-auto px-4 py-8">
+  <section class="mb-10">
+    <h2 class="text-2xl font-bold mb-4">Project Overview</h2>
+    <p class="mb-4">As part of the Principles of Database Management Systems course, we were tasked with creating a fully functional relational database for a real‑world domain. Our team chose to design a <strong>Hospital Management System</strong> to support patient intake, appointment scheduling, billing, and record management.</p>
+    <p class="mb-4">The project requirements included:</p>
+    <ul class="list-disc list-inside mb-4">
+      <li>Conducting a system analysis and defining use cases and functional requirements.</li>
+      <li>Developing an Entity–Relationship (ER) diagram that accurately models the domain.</li>
+      <li>Normalizing the schema to 3rd Normal Form (3NF) to eliminate redundancy.</li>
+      <li>Implementing the database in MySQL with tables, keys, and constraints.</li>
+      <li>Populating tables with realistic sample data and writing SQL queries to answer business questions.</li>
+      <li>Creating stored procedures, triggers and views to automate logic and encapsulate business rules.</li>
+    </ul>
+  </section>
+  <section class="mb-10">
+    <h2 class="text-2xl font-bold mb-4">Designing the Schema</h2>
+    <p class="mb-4">We began by interviewing stakeholders (imaginary in this context) to identify the key entities: <em>Patients</em>, <em>Appointments</em>, <em>Doctors</em>, <em>Departments</em>, and <em>Bills</em>.  
+      Relationships such as one‑to‑many (a patient can have many appointments) and many‑to‑one (many appointments belong to one doctor) were mapped out.</p>
+    <p class="mb-4">Our ER diagram captured these relationships and highlighted important attributes like patient demographics, appointment times, and billing codes. After normalizing the schema to eliminate duplication, we implemented the following tables (simplified here):</p>
+    <pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto"><code>CREATE TABLE Patients (
+  patient_id INT PRIMARY KEY,
+  first_name VARCHAR(50),
+  last_name VARCHAR(50),
+  date_of_birth DATE,
+  gender CHAR(1),
+  phone VARCHAR(20),
+  address VARCHAR(255)
+);
+
+CREATE TABLE Doctors (
+  doctor_id INT PRIMARY KEY,
+  name VARCHAR(100),
+  specialty VARCHAR(100),
+  department_id INT,
+  FOREIGN KEY (department_id) REFERENCES Departments(department_id)
+);
+
+CREATE TABLE Appointments (
+  appointment_id INT PRIMARY KEY,
+  patient_id INT,
+  doctor_id INT,
+  appointment_datetime DATETIME,
+  notes TEXT,
+  FOREIGN KEY (patient_id) REFERENCES Patients(patient_id),
+  FOREIGN KEY (doctor_id) REFERENCES Doctors(doctor_id)
+);
+</code></pre>
+  </section>
+  <section class="mb-10">
+    <h2 class="text-2xl font-bold mb-4">Querying &amp; Integrity</h2>
+    <p class="mb-4">Once the schema was built and populated with sample data, we wrote SQL queries to support common operational and analytical tasks.  
+      Examples include listing all upcoming appointments for a doctor, counting patients seen by department, and calculating revenue per month.</p>
+    <pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto"><code>-- Find all appointments for Dr. Smith next week
+SELECT a.appointment_id, p.first_name, p.last_name, a.appointment_datetime
+FROM Appointments a
+JOIN Patients p ON a.patient_id = p.patient_id
+JOIN Doctors d ON a.doctor_id = d.doctor_id
+WHERE d.name = 'Dr. Smith'
+  AND a.appointment_datetime BETWEEN '2025-11-01' AND '2025-11-07'
+ORDER BY a.appointment_datetime;
+
+-- Total revenue per department (simplified)
+SELECT d.department_name, SUM(b.amount) AS total_revenue
+FROM Bills b
+JOIN Doctors doc ON b.doctor_id = doc.doctor_id
+JOIN Departments d ON doc.department_id = d.department_id
+GROUP BY d.department_name;
+</code></pre>
+    <p class="mb-4">Triggers and stored procedures were added to enforce business rules; for example, a trigger prevented inserting an appointment that overlapped with another appointment for the same doctor. Views were created to simplify reporting.</p>
+  </section>
+  <section class="mb-10">
+    <h2 class="text-2xl font-bold mb-4">Reflection</h2>
+    <p class="mb-4">This project underscored the importance of thoughtful data modeling and normalization.  
+      It also highlighted how SQL can be used not only for data retrieval but also for enforcing integrity and implementing business logic.  
+      By connecting this project to our work in programming for analytics, we realized how database design decisions impact data retrieval efficiency and subsequent analysis.</p>
+  </section>
+</main>
+<footer class="bg-gray-200 text-center py-4 mt-8">
+  <p>&copy; 2025 Paul Pagnozzi &mdash; MSBA Portfolio</p>
+</footer>
+</body>
+</html>
